@@ -1,17 +1,24 @@
 <template>
   <div class="home">
-    <h1>{{ msg }}</h1>
+    <heading :title="title"></heading>
+    <p>{{ message }}</p>
   </div>
 </template>
 
 <script>
+  import Heading from "@/components/Header";
   import homeResources from "@/resources/home";
 
   export default {
     name: "home",
+    components: {
+      heading: Heading,
+    },
     data() {
       return {
-        msg: homeResources.title,
+        title: homeResources.title,
+        menu: homeResources.menu,
+        message: homeResources.message,
       };
     },
   };
@@ -19,21 +26,4 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
