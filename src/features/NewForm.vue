@@ -8,7 +8,7 @@
       </div>
       <div class="form__input-group">
         <label>Date</label>
-        <input name="date" v-model="date">
+        <date-picker v-model="date"></date-picker>
       </div>
       <div class="form__input-group">
         <label>Category</label>
@@ -22,10 +22,6 @@
         <label>Cost</label>
         <input type="number" name="cost" v-model="cost">
       </div>
-      <div class="form__input-group">
-        <label>Month</label>
-        <input type="number" name="month" v-model="month">
-      </div>
       <button class="form__button">Submit</button>
     </form>
   </div>
@@ -33,12 +29,15 @@
 
 <script>
   import { mapActions } from "vuex";
+  import datePicker from "vuejs-datepicker";
+  import moment from "moment";
   import Heading from "@/components/Header";
   import homeResources from "@/resources/home";
 
   export default {
     components: {
       heading: Heading,
+      datePicker,
     },
     data() {
       return {
@@ -46,8 +45,8 @@
         date: null,
         category: null,
         cost: null,
-        month: null,
         title: homeResources.menu.new,
+        // todo: move it to dictionaries
         categoryOptions: [
           "Food", "Bills",
         ],
@@ -57,10 +56,9 @@
       submit() {
         this.insert({
           name: this.name,
-          date: this.date,
+          date: moment(this.date).format("DD-MM-YYYY"),
           category: this.category,
           cost: this.cost,
-          month: this.month,
         });
       },
       ...mapActions({
