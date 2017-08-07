@@ -20,20 +20,26 @@ const mutations = {
   },
 };
 
+// todo
 const actions = {
-  fetchExpenditures({ commit }) {
+  fetchExpenditures({ dispatch, commit }) {
     ExpenditureService.fetch()
-      .then(data => commit(ASSIGN_EXPENDITURES, data));
+      .then(data => commit(ASSIGN_EXPENDITURES, data))
+      .catch(() => dispatch("pushNotification", { message: "Error during fetching", type: "error" }));
   },
-  insertExpenditure({ commit }, expenditureObject) {
+  insertExpenditure({ dispatch, commit }, expenditureObject) {
     const newExpenditure = Object.assign(expenditureObject, { id: uuid() });
 
     ExpenditureService.insert(newExpenditure)
-      .then(data => commit(INSERT_EXPENDITURE, data));
+      .then(data => commit(INSERT_EXPENDITURE, data))
+      .then(() => dispatch("pushNotification", { message: "Posting succeeded", type: "success" }))
+      .catch(() => dispatch("pushNotification", { message: "Posting expenditure error", type: "error" }));
   },
-  deleteExpenditure({ commit }, id) {
+  deleteExpenditure({ dispatch, commit }, id) {
     ExpenditureService.delete(id)
-      .then(() => commit(DELETE_EXPENDITURE, id));
+      .then(() => commit(DELETE_EXPENDITURE, id))
+      .then(() => dispatch("pushNotification", { message: "Deleting succeeded", type: "success" }))
+      .catch(() => dispatch("pushNotification", { message: "Deleting expenditure error", type: "error" }));
   },
 };
 

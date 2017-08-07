@@ -1,13 +1,19 @@
 <template>
   <div id="app">
+    <notification></notification>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
-  name: "app",
-};
+  import notification from "@/components/Notification";
+
+  export default {
+    name: "app",
+    components: {
+      notification,
+    },
+  };
 </script>
 
 <style lang="scss">
