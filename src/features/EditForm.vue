@@ -1,5 +1,5 @@
 <template>
-  <div class="new">
+  <div class="edit">
     <heading :title="title"></heading>
     <expenditure-form
       :initialData="model"
@@ -12,20 +12,17 @@
 
 <script>
   import { mapActions, mapState } from "vuex";
-  import datePicker from "vuejs-datepicker";
-  import Heading from "@/components/Header";
-  import homeResources from "@/resources/home";
+  import heading from "@/components/Header";
   import expenditureForm from "@/components/ExpenditureForm";
 
   export default {
     components: {
-      heading: Heading,
-      datePicker,
+      heading,
       expenditureForm,
     },
     data() {
       return {
-        title: homeResources.menu.new,
+        title: "Edit expenditure",
         // todo: move it to dictionaries
         categoryOptions: [
           "Food", "Bills",
@@ -42,12 +39,21 @@
         cost: expenditureForm.cost,
       }),
     }),
+    created() {
+      this.fetch(this.$route.params.id);
+    },
+    beforeDestroy() {
+      this.erase();
+    },
     methods: {
       submit(payload) {
-        this.insert(payload);
+        console.log(payload);
+        this.update(payload);
       },
       ...mapActions({
-        insert: "insertExpenditure",
+        update: "updateExpenditure",
+        erase: "eraseData",
+        fetch: "getFormDataById",
       }),
     },
   };

@@ -9,12 +9,13 @@
           <th>Category</th>
           <th>Cost</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in list">
           <td>{{ item.name }}</td>
-          <td>{{ item.date }}</td>
+          <td>{{ formatDate(item.date) }}</td>
           <td>{{ item.category }}</td>
           <td>{{ item.cost }}</td>
           <td>
@@ -25,6 +26,16 @@
               Delete
             </button>
           </td>
+          <td>
+            <!-- refactor this -->
+            <router-link :to="`edit/${item.id}`" >
+              <button
+                class="button-link"
+              >
+                Edit
+              </button>
+            </router-link>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -33,6 +44,7 @@
 
 <script>
   import { mapActions, mapState } from "vuex";
+  import moment from "moment";
   import Heading from "@/components/Header";
   import homeResources from "@/resources/home";
 
@@ -56,6 +68,9 @@
         "fetchExpenditures",
         "deleteExpenditure",
       ]),
+      formatDate(date) {
+        return moment(date).format("DD-MM-YYYY");
+      },
     },
   };
 </script>

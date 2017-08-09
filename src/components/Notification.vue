@@ -2,8 +2,9 @@
   <transition
     name="fade"
     v-on:enter="enter"
+    v-if="notification"
   >
-    <div class="notification" v-if="notification" v-bind:class="classObject">
+    <div class="notification" v-bind:class="classObject">
       {{ notification.message }}
     </div>
   </transition>
@@ -17,7 +18,7 @@
       timer: null,
     }),
     computed: mapState({
-      notification: ({ userinterface }) => userinterface.currentNotification,
+      notification: ({ userInterface }) => userInterface.currentNotification,
       classObject() {
         return {
           error: this.notification.type === "error",
