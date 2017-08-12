@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <heading :title="title"></heading>
-    <table class="table">
+    <table class="table" v-if="list.length">
       <thead>
         <tr>
           <th>Name</th>
@@ -39,6 +39,9 @@
         </tr>
       </tbody>
     </table>
+    <p v-else>
+      In order to see expenditures you have to add one
+    </p>
   </div>
 </template>
 

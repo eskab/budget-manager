@@ -3,7 +3,6 @@
     <heading :title="title"></heading>
     <expenditure-form
       :initialData="model"
-      :categoryOptions="categoryOptions"
       v-on:submit="submit"
     >
     </expenditure-form>
@@ -11,9 +10,11 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from "vuex";
+  import { mapActions } from "vuex";
   import heading from "@/components/Header";
   import expenditureForm from "@/components/ExpenditureForm";
+  import ExpenditureService from "@/services/expenditures";
+  import resources from "@/resources/home";
 
   export default {
     components: {
@@ -22,38 +23,26 @@
     },
     data() {
       return {
-        title: "Edit expenditure",
-        // todo: move it to dictionaries
-        categoryOptions: [
-          "Food", "Bills",
-        ],
+        model: {
+          id: null,
+          name: null,
+          date: null,
+          category: null,
+          cost: null,
+        },
+        title: resources.menu.edit,
       };
     },
-    computed: mapState({
-      // eslint-disable-next-line no-shadow
-      model: ({ expenditureForm }) => ({
-        id: expenditureForm.id,
-        name: expenditureForm.name,
-        date: expenditureForm.date,
-        category: expenditureForm.category,
-        cost: expenditureForm.cost,
-      }),
-    }),
     created() {
-      this.fetch(this.$route.params.id);
-    },
-    beforeDestroy() {
-      this.erase();
+      ExpenditureService.getById(this.$route.params.id)
+        .then((data) => { this.model = data; });
     },
     methods: {
       submit(payload) {
-        console.log(payload);
         this.update(payload);
       },
       ...mapActions({
         update: "updateExpenditure",
-        erase: "eraseData",
-        fetch: "getFormDataById",
       }),
     },
   };

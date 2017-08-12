@@ -11,8 +11,8 @@
     <div class="form__input-group">
       <label>Category</label>
       <select v-model="model.category" name="category">
-        <option v-for="categoryOption in categoryOptions">
-          {{ categoryOption }}
+        <option v-for="category in categories">
+          {{ category }}
         </option>
       </select>
     </div>
@@ -26,12 +26,18 @@
 
 <script>
   import datePicker from "vuejs-datepicker";
+  import DictionariesService from "@/services/dictionaries";
 
   export default {
     components: {
       datePicker,
     },
-    props: ["initialData", "categoryOptions"],
+    props: ["initialData"],
+    data() {
+      return {
+        categories: null,
+      };
+    },
     computed: {
       model() {
         return {
@@ -42,6 +48,11 @@
           cost: this.initialData.cost,
         };
       },
+    },
+    created() {
+      DictionariesService.fetch()
+        .then(data => data.map(({ code }) => code))
+        .then((data) => { this.categories = data; });
     },
     methods: {
       submit() {

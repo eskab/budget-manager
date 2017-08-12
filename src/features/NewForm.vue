@@ -3,7 +3,6 @@
     <heading :title="title"></heading>
     <expenditure-form
       :initialData="model"
-      :categoryOptions="categoryOptions"
       v-on:submit="submit"
     >
     </expenditure-form>
@@ -11,7 +10,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from "vuex";
+  import { mapActions } from "vuex";
   import datePicker from "vuejs-datepicker";
   import Heading from "@/components/Header";
   import homeResources from "@/resources/home";
@@ -25,23 +24,16 @@
     },
     data() {
       return {
+        model: {
+          id: null,
+          name: null,
+          date: null,
+          category: null,
+          cost: null,
+        },
         title: homeResources.menu.new,
-        // todo: move it to dictionaries
-        categoryOptions: [
-          "Food", "Bills",
-        ],
       };
     },
-    computed: mapState({
-      // eslint-disable-next-line no-shadow
-      model: ({ expenditureForm }) => ({
-        id: expenditureForm.id,
-        name: expenditureForm.name,
-        date: expenditureForm.date,
-        category: expenditureForm.category,
-        cost: expenditureForm.cost,
-      }),
-    }),
     methods: {
       submit(payload) {
         this.insert(payload);
