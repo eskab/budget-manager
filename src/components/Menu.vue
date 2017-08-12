@@ -1,6 +1,5 @@
 <template>
   <div class="menu">
-    <router-link to="/">{{ menu.home }}</router-link>
     <router-link to="/list">{{ menu.list }}</router-link>
     <router-link to="/new">{{ menu.new }}</router-link>
     <router-link to="/configuration">{{ menu.configuration }}</router-link>
@@ -27,6 +26,10 @@
 
     a {
       margin-right: 10px;
+    }
+
+    a.router-link-active {
+      color: #365899;
     }
   }
 </style>

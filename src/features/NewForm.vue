@@ -1,6 +1,5 @@
 <template>
   <div class="new">
-    <heading :title="title"></heading>
     <expenditure-form
       :initialData="model"
       v-on:submit="submit"
@@ -12,13 +11,11 @@
 <script>
   import { mapActions } from "vuex";
   import datePicker from "vuejs-datepicker";
-  import Heading from "@/components/Header";
   import homeResources from "@/resources/home";
   import expenditureForm from "@/components/ExpenditureForm";
 
   export default {
     components: {
-      heading: Heading,
       datePicker,
       expenditureForm,
     },

@@ -7,18 +7,12 @@
 
 <script>
   import Menu from "@/components/Menu";
-  import homeResources from "@/resources/home";
 
   export default {
     name: "Header",
     props: ["title"],
     components: {
       "bm-menu": Menu,
-    },
-    data() {
-      return {
-        menu: homeResources.menu,
-      };
     },
   };
 </script>

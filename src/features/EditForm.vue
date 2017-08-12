@@ -1,6 +1,5 @@
 <template>
   <div class="edit">
-    <heading :title="title"></heading>
     <expenditure-form
       :initialData="model"
       v-on:submit="submit"
@@ -11,14 +10,12 @@
 
 <script>
   import { mapActions } from "vuex";
-  import heading from "@/components/Header";
   import expenditureForm from "@/components/ExpenditureForm";
   import ExpenditureService from "@/services/expenditures";
   import resources from "@/resources/home";
 
   export default {
     components: {
-      heading,
       expenditureForm,
     },
     data() {

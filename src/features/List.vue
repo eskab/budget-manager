@@ -1,6 +1,5 @@
 <template>
   <div class="list">
-    <heading :title="title"></heading>
     <table class="table" v-if="list.length">
       <thead>
         <tr>
@@ -48,13 +47,9 @@
 <script>
   import { mapActions, mapState } from "vuex";
   import moment from "moment";
-  import Heading from "@/components/Header";
   import homeResources from "@/resources/home";
 
   export default {
-    components: {
-      heading: Heading,
-    },
     data() {
       return {
         title: homeResources.menu.list,
