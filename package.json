@@ -15,6 +15,7 @@
     "db": "json-server --watch db.json --port 3030"
   },
   "dependencies": {
+    "iview": "^2.0.0",
     "moment": "^2.18.1",
     "uuid": "^3.1.0",
     "vue": "^2.3.3",

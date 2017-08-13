@@ -77,7 +77,6 @@
   .table {
     border-spacing: 0;
     width: 100%;
-    margin: 20px 0;
 
     td, th {
       padding: 12px 6px;

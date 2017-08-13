@@ -1,37 +1,35 @@
 <template>
-  <form class="form" v-on:submit.prevent="submit">
-    <div class="form__input-group">
-      <label>Name</label>
-      <input name="name" v-model="model.name">
-    </div>
-    <div class="form__input-group">
-      <label>Date</label>
-      <date-picker v-model="model.date"></date-picker>
-    </div>
-    <div class="form__input-group">
-      <label>Category</label>
-      <select v-model="model.category" name="category">
-        <option v-for="category in categories">
-          {{ category }}
-        </option>
-      </select>
-    </div>
-    <div class="form__input-group">
-      <label>Cost</label>
-      <input type="number" name="cost" v-model="model.cost">
-    </div>
-    <button class="form__button">Submit</button>
-  </form>
+  <Row>
+    <Col span="6">
+      <Form :model="model" :label-width="80">
+        <Form-item label="Name">
+          <Input name="name" v-model="model.name"></Input>
+        </Form-item>
+        <Form-item label="Date">
+          <date-picker type="date" v-model="model.date"></date-picker>
+        </Form-item>
+        <Form-item label="Category">
+          <Select v-model="model.category" name="category">
+            <Option v-for="category in categories" :value="category" :key="category">
+              {{ category }}
+            </Option>
+          </Select>
+        </Form-item>
+        <Form-item label="Cost">
+          <InputNumber v-model="model.cost"></InputNumber>
+        </Form-item>
+        <Form-item>
+          <Button type="primary" v-on:click.prevent="submit">Submit</Button>
+        </Form-item>
+      </Form>
+    </Col>
+  </Row>
 </template>
 
 <script>
-  import datePicker from "vuejs-datepicker";
   import DictionariesService from "@/services/dictionaries";
 
   export default {
-    components: {
-      datePicker,
-    },
     props: ["initialData"],
     data() {
       return {
@@ -62,36 +60,4 @@
   };
 </script>
 
-<style lang="scss">
-  .form {
-    display: flex;
-    flex-flow: column wrap;
-    margin: 20px 0;
-
-    &__input-group {
-      margin: 3px 0;
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-
-      label {
-        font-size: 12px;
-        margin-right: 5px;
-        width: 5%;
-      }
-
-      input, select {
-        border: 1px solid #ddd;
-        padding: 5px;
-        color: #555;
-        width: 200px;
-        box-sizing: border-box;
-      }
-    }
-
-    &__button {
-      margin: 10px 0;
-      width: 10%;
-    }
-  }
-</style>
+<style lang="scss"></style>

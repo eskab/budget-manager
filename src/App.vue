@@ -2,9 +2,11 @@
   <div id="app">
     <notification></notification>
     <heading title="Budget manager"></heading>
-    <transition name="view-fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
+    <div class="app-container">
+      <transition name="view-fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -27,7 +29,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-left: 10px;
 }
 
 .view-fade-enter-active, .view-fade-leave-active {
@@ -37,6 +38,10 @@
 .view-fade-enter,
 .view-fade-leave-to {
   opacity: 0;
+}
+
+.app-container {
+  margin: 15px 10px;
 }
 
 </style>

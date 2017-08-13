@@ -46,6 +46,7 @@
 <style lang="scss" scoped>
   .notification {
     display: block;
+    z-index: 1;
     position: absolute;
     top: 30px;
     right: 20px;

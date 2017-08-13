@@ -1,7 +1,6 @@
 <template>
   <div class="header">
-    <h2>{{ title }}</h2>
-    <bm-menu></bm-menu>
+    <bm-menu :title="title"></bm-menu>
   </div>
 </template>
 
