@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 import * as uuid from "uuid/v1";
+import moment from "moment";
 import ExpenditureService from "@/services/expenditures";
 import { ASSIGN_EXPENDITURES, DELETE_EXPENDITURE, INSERT_EXPENDITURE, UPDATE_EXPENDITURE } from "./mutations";
 
@@ -24,6 +25,18 @@ const mutations = {
         expenditure = expenditureObject;
       }
     });
+  },
+};
+
+const getters = {
+  formattedList: (state) => {
+    const { expenditures } = state;
+
+    expenditures.forEach((expenditure) => {
+      expenditure.date = moment(expenditure.date).format("DD-MM-YYYY");
+    });
+
+    return expenditures;
   },
 };
 
@@ -56,4 +69,4 @@ const actions = {
   },
 };
 
-export default { state, mutations, actions };
+export default { state, mutations, getters, actions };

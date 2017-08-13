@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import List from "@/features/List";
+import List from "@/features/List/List";
 import NewForm from "@/features/NewForm";
 import EditForm from "@/features/EditForm";
 import Configuration from "@/features/Configuration";
