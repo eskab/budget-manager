@@ -1,12 +1,15 @@
 import Vue from "vue";
+import iView from "iview";
 import Header from "@/components/Header";
 import router from "@/router";
+
+Vue.use(iView);
 
 const getRenderedText = (Component, propsData) => {
   const Ctor = Vue.extend(Component);
   const vm = new Ctor({ router, propsData }).$mount();
 
-  return vm.$el.querySelector(".header h2").textContent;
+  return vm.$el.querySelector(".header .title").textContent;
 };
 
 describe("Header.vue", () => {
@@ -25,6 +28,6 @@ describe("Header.vue", () => {
     const vm = new Ctor({ router, propsData: "" }).$mount();
 
     // eslint-disable-next-line
-    expect(vm.$el.querySelector(".header .menu")).to.not.be.null;
+    expect(vm.$el.querySelector(".header .ivu-menu")).to.not.be.null;
   });
 });

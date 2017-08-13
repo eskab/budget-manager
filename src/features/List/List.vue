@@ -1,5 +1,6 @@
 <template>
   <div class="list">
+    <filter-bar></filter-bar>
     <Table :columns="columns" :data="list" v-if="list.length"></Table>
     <p v-else>
       In order to see expenditures you have to add one
@@ -8,11 +9,15 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from "vuex";
+  import { mapActions, mapState } from "vuex";
   import homeResources from "@/resources/home";
+  import FilterBar from "./FilterBar";
   import columns from "./tableColumns";
 
   export default {
+    components: {
+      FilterBar,
+    },
     data() {
       return {
         title: homeResources.menu.list,
@@ -55,8 +60,8 @@
       };
     },
     computed: {
-      ...mapGetters({
-        list: "formattedList",
+      ...mapState({
+        list: ({ expenditures }) => expenditures.expenditures,
       }),
     },
     created() {

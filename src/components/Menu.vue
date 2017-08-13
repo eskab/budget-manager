@@ -1,8 +1,6 @@
 <template>
   <Menu mode="horizontal" theme="dark" :active-name="routeName">
-    <div class="title">
-      {{ title }}
-    </div>
+    <div class="title">{{ title }}</div>
     <div class="nav">
       <Menu-item name="List">
         <router-link to="/list">

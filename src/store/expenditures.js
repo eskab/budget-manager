@@ -29,22 +29,25 @@ const mutations = {
 };
 
 const getters = {
-  formattedList: (state) => {
-    const { expenditures } = state;
-
-    expenditures.forEach((expenditure) => {
-      expenditure.date = moment(expenditure.date).format("DD-MM-YYYY");
-    });
-
-    return expenditures;
-  },
+  getExpendituresByCategory: state => category =>
+    state.expenditures.filter(expenditure => expenditure.category === category),
+  // Todo
+  getExpendituresByDateRange: state => ([startDate, endDate]) =>
+    state.expenditures.filter(({ date }) => {
+      const dateObject = moment(date);
+      return (
+        dateObject.isSame(startDate, "day") || dateObject.isAfter(startDate, "day")
+      ) && (
+        dateObject.isSame(endDate, "day") || dateObject.isBefore(endDate, "day")
+      );
+    }),
 };
 
-// todo
 const actions = {
   fetchExpenditures({ dispatch, commit }) {
     ExpenditureService.fetch()
       .then(data => commit(ASSIGN_EXPENDITURES, data))
+      // Todo
       .catch(() => dispatch("pushNotification", { message: "Error during fetching", type: "error" }));
   },
   insertExpenditure({ dispatch, commit }, expenditureObject) {
@@ -66,6 +69,9 @@ const actions = {
       .then(() => commit(DELETE_EXPENDITURE, id))
       .then(() => dispatch("pushNotification", { message: "Deleting succeeded", type: "success" }))
       .catch(() => dispatch("pushNotification", { message: "Deleting expenditure error", type: "error" }));
+  },
+  filterExpenditures({ getters }, query) {
+    console.debug("Result is: ", getters.getExpendituresByDateRange(query.dateRange));
   },
 };
 

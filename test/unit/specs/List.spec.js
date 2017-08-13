@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import * as sinon from "sinon";
-import List from "@/features/List";
+import moment from "moment";
+import List from "@/features/List/List";
 import router from "@/router";
 import { ASSIGN_EXPENDITURES } from "../../../src/store/mutations";
 
@@ -13,6 +14,18 @@ const store = {
     ASSIGN_EXPENDITURES(state, expenditures) {
       // eslint-disable-next-line
       state.expenditures = expenditures;
+    },
+  },
+  getters: {
+    formattedList: (state) => {
+      const { expenditures } = state;
+
+      expenditures.forEach((expenditure) => {
+        //eslint-disable-next-line
+        expenditure.date = moment(expenditure.date).format("DD-MM-YYYY");
+      });
+
+      return expenditures;
     },
   },
   actions: {
