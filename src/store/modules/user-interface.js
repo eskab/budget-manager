@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 
-import { CLEAR_CURRENT_NOTIFICATION, PUSH_NOTIFICATION, SET_NOTIFICATION } from "./mutations";
+import { CLEAR_CURRENT_NOTIFICATION, PUSH_NOTIFICATION, SET_NOTIFICATION } from "../mutations";
 
 const state = {
   notifications: [],

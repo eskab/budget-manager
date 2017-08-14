@@ -3,10 +3,30 @@
 import * as uuid from "uuid/v1";
 import moment from "moment";
 import ExpenditureService from "@/services/expenditures";
-import { ASSIGN_EXPENDITURES, DELETE_EXPENDITURE, INSERT_EXPENDITURE, UPDATE_EXPENDITURE } from "./mutations";
+import { ASSIGN_EXPENDITURES, DELETE_EXPENDITURE, INSERT_EXPENDITURE, UPDATE_EXPENDITURE } from "../mutations";
+
+// Todo - move it somewhere
+const filterByCategories = (expenditures, categories) =>
+  expenditures.filter(expenditure =>
+    !categories.length || categories.some(category => category === expenditure.category),
+  );
+
+const filterByDateRange = (expenditures, [startDate, endDate]) =>
+  expenditures.filter(({ date }) => {
+    const dateObject = moment(date);
+    return (
+      dateObject.isSame(startDate, "day") || dateObject.isAfter(startDate, "day")
+    ) && (
+      dateObject.isSame(endDate, "day") || dateObject.isBefore(endDate, "day")
+    );
+  });
 
 const state = {
   expenditures: [],
+  filters: {
+    categories: [],
+    dateRange: [],
+  },
 };
 
 const mutations = {
@@ -29,18 +49,27 @@ const mutations = {
 };
 
 const getters = {
-  getExpendituresByCategory: state => category =>
-    state.expenditures.filter(expenditure => expenditure.category === category),
-  // Todo
-  getExpendituresByDateRange: state => ([startDate, endDate]) =>
-    state.expenditures.filter(({ date }) => {
-      const dateObject = moment(date);
-      return (
-        dateObject.isSame(startDate, "day") || dateObject.isAfter(startDate, "day")
-      ) && (
-        dateObject.isSame(endDate, "day") || dateObject.isBefore(endDate, "day")
-      );
-    }),
+  // Todo - it is not the best approach to do that
+  filteredExpenditures: ({ expenditures, filters }) => {
+    let filteredExpenditures = expenditures;
+
+    Object.keys(filters)
+      // eslint-disable-next-line
+      .forEach((key) => {
+        switch (key) {
+          case "dateRange":
+            filteredExpenditures = filterByDateRange(filteredExpenditures, filters.dateRange);
+            break;
+          case "categories":
+            filteredExpenditures = filterByCategories(filteredExpenditures, filters.categories);
+            break;
+          default:
+            return filteredExpenditures;
+        }
+      });
+
+    return filteredExpenditures;
+  },
 };
 
 const actions = {
@@ -69,9 +98,6 @@ const actions = {
       .then(() => commit(DELETE_EXPENDITURE, id))
       .then(() => dispatch("pushNotification", { message: "Deleting succeeded", type: "success" }))
       .catch(() => dispatch("pushNotification", { message: "Deleting expenditure error", type: "error" }));
-  },
-  filterExpenditures({ getters }, query) {
-    console.debug("Result is: ", getters.getExpendituresByDateRange(query.dateRange));
   },
 };
 

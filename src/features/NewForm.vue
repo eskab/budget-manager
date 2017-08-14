@@ -10,13 +10,11 @@
 
 <script>
   import { mapActions } from "vuex";
-  import datePicker from "vuejs-datepicker";
   import homeResources from "@/resources/home";
   import expenditureForm from "@/components/ExpenditureForm";
 
   export default {
     components: {
-      datePicker,
       expenditureForm,
     },
     data() {

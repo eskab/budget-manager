@@ -27,15 +27,11 @@
 </template>
 
 <script>
-  import DictionariesService from "@/services/dictionaries";
+  import categories from "@/mixins/categories";
 
   export default {
+    mixins: [categories],
     props: ["initialData"],
-    data() {
-      return {
-        categories: null,
-      };
-    },
     computed: {
       model() {
         return {
@@ -46,11 +42,6 @@
           cost: this.initialData.cost,
         };
       },
-    },
-    created() {
-      DictionariesService.fetch()
-        .then(data => data.map(({ code }) => code))
-        .then((data) => { this.categories = data; });
     },
     methods: {
       submit() {

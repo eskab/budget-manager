@@ -3,7 +3,7 @@
     <Form :model="model" inline>
       <!-- Extend it to component -->
       <Form-item label="Category">
-        <Select v-model="model.category" name="category">
+        <Select v-model="model.categories" name="category" style="width: 300px" multiple>
           <Option v-for="category in categories" :value="category" :key="category">
             {{ category }}
           </Option>
@@ -12,38 +12,19 @@
       <Form-item label="Date range">
         <date-picker type="daterange" v-model="model.dateRange"></date-picker>
       </Form-item>
-      <Form-item>
-        <Button type="primary" v-on:click.prevent="filter(model)">Submit</Button>
-      </Form-item>
     </Form>
   </div>
 </template>
 
 <script>
-  import { mapActions } from "vuex";
-  import DictionariesService from "@/services/dictionaries";
+  import { mapState } from "vuex";
+  import categories from "@/mixins/categories";
 
   export default {
-    data() {
-      return {
-        model: {
-          category: null,
-          dateRange: null,
-        },
-        categories: null,
-      };
-    },
-    created() {
-      // Todo - create mixin for that
-      DictionariesService.fetch()
-        .then(data => data.map(({ code }) => code))
-        .then((data) => { this.categories = data; });
-    },
-    methods: {
-      ...mapActions({
-        filter: "filterExpenditures",
-      }),
-    },
+    mixins: [categories],
+    computed: mapState({
+      model: ({ expenditures }) => expenditures.filters,
+    }),
   };
 </script>
 

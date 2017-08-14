@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from "vuex";
+  import { mapActions, mapGetters } from "vuex";
   import homeResources from "@/resources/home";
   import FilterBar from "./FilterBar";
   import columns from "./tableColumns";
@@ -60,8 +60,8 @@
       };
     },
     computed: {
-      ...mapState({
-        list: ({ expenditures }) => expenditures.expenditures,
+      ...mapGetters({
+        list: "filteredExpenditures",
       }),
     },
     created() {

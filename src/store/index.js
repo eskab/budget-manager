@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import expenditures from "./expenditures";
-import userInterface from "./user-interface";
+import expenditures from "./modules/expenditures";
+import userInterface from "./modules/user-interface";
 
 Vue.use(Vuex);
 

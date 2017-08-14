@@ -11,3 +11,7 @@ yarn install
 # Start development
 yarn start
 ```
+
+## To do
+* Resolve all todos!
+* Think about project structure
