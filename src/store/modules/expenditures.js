@@ -3,7 +3,10 @@
 import * as uuid from "uuid/v1";
 import moment from "moment";
 import ExpenditureService from "@/services/expenditures";
-import { ASSIGN_EXPENDITURES, DELETE_EXPENDITURE, INSERT_EXPENDITURE, UPDATE_EXPENDITURE } from "../mutations";
+import {
+  ASSIGN_EXPENDITURES, DELETE_EXPENDITURE, INSERT_EXPENDITURE, UPDATE_CATEGORY_FILTER,
+  UPDATE_DATERANGE_FILTER, UPDATE_EXPENDITURE,
+} from "../mutations";
 
 // Todo - move it somewhere
 const filterByCategories = (expenditures, categories) =>
@@ -13,6 +16,10 @@ const filterByCategories = (expenditures, categories) =>
 
 const filterByDateRange = (expenditures, [startDate, endDate]) =>
   expenditures.filter(({ date }) => {
+    if (!startDate && !endDate) {
+      return true;
+    }
+
     const dateObject = moment(date);
     return (
       dateObject.isSame(startDate, "day") || dateObject.isAfter(startDate, "day")
@@ -46,6 +53,12 @@ const mutations = {
       }
     });
   },
+  [UPDATE_CATEGORY_FILTER](state, value) {
+    state.filters.categories = value;
+  },
+  [UPDATE_DATERANGE_FILTER](state, value) {
+    state.filters.dateRange = value;
+  },
 };
 
 const getters = {
@@ -76,28 +89,27 @@ const actions = {
   fetchExpenditures({ dispatch, commit }) {
     ExpenditureService.fetch()
       .then(data => commit(ASSIGN_EXPENDITURES, data))
-      // Todo
-      .catch(() => dispatch("pushNotification", { message: "Error during fetching", type: "error" }));
+      .catch(() => dispatch("showErrorNotification", "Error during fetching"));
   },
   insertExpenditure({ dispatch, commit }, expenditureObject) {
     const newExpenditure = Object.assign(expenditureObject, { id: uuid() });
 
     ExpenditureService.insert(newExpenditure)
       .then(data => commit(INSERT_EXPENDITURE, data))
-      .then(() => dispatch("pushNotification", { message: "Posting succeeded", type: "success" }))
-      .catch(() => dispatch("pushNotification", { message: "Posting expenditure error", type: "error" }));
+      .then(() => dispatch("showSuccessNotification", "Posting succeeded"))
+      .catch(() => dispatch("showErrorNotification", "Posting expenditure error"));
   },
   updateExpenditure({ dispatch, commit }, expenditureObject) {
     ExpenditureService.update(expenditureObject)
       .then(data => commit(UPDATE_EXPENDITURE, data))
-      .then(() => dispatch("pushNotification", { message: "Putting succeeded", type: "success" }))
-      .catch(() => dispatch("pushNotification", { message: "Putting expenditure error", type: "error" }));
+      .then(() => dispatch("showSuccessNotification", "Putting succeeded"))
+      .catch(() => dispatch("showErrorNotification", "Putting expenditure error"));
   },
   deleteExpenditure({ dispatch, commit }, id) {
     ExpenditureService.delete(id)
       .then(() => commit(DELETE_EXPENDITURE, id))
-      .then(() => dispatch("pushNotification", { message: "Deleting succeeded", type: "success" }))
-      .catch(() => dispatch("pushNotification", { message: "Deleting expenditure error", type: "error" }));
+      .then(() => dispatch("showSuccessNotification", "Deleting succeeded"))
+      .catch(() => dispatch("showErrorNotification", "Deleting expenditure error"));
   },
 };
 

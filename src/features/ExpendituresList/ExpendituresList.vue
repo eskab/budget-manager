@@ -3,14 +3,14 @@
     <filter-bar></filter-bar>
     <Table :columns="columns" :data="list" v-if="list.length"></Table>
     <p v-else>
-      In order to see expenditures you have to add one
+      {{ emptyList }}
     </p>
   </div>
 </template>
 
 <script>
   import { mapActions, mapGetters } from "vuex";
-  import homeResources from "@/resources/home";
+  import resources from "@/resources";
   import FilterBar from "./FilterBar";
   import columns from "./tableColumns";
 
@@ -20,7 +20,7 @@
     },
     data() {
       return {
-        title: homeResources.menu.list,
+        emptyList: resources.menu.expenditures.emptyList,
         columns: [
           ...columns,
           {
@@ -47,7 +47,7 @@
                   on: {
                     click: () =>
                       this.$router.push({
-                        name: "EditForm",
+                        name: "expenditureEdit",
                         params: {
                           id: params.row.id,
                         },

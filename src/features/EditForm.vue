@@ -12,21 +12,16 @@
   import { mapActions } from "vuex";
   import expenditureForm from "@/components/ExpenditureForm";
   import ExpenditureService from "@/services/expenditures";
-  import resources from "@/resources/home";
+  import resources from "@/resources";
+  import formData from "@/mixins/formData";
 
   export default {
     components: {
       expenditureForm,
     },
+    mixins: [formData],
     data() {
       return {
-        model: {
-          id: null,
-          name: null,
-          date: null,
-          category: null,
-          cost: null,
-        },
         title: resources.menu.edit,
       };
     },

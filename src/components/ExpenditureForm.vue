@@ -10,7 +10,7 @@
         </Form-item>
         <Form-item label="Category">
           <Select v-model="model.category" name="category">
-            <Option v-for="category in categories" :value="category" :key="category">
+            <Option v-for="category in categoriesDictionary" :value="category" :key="category">
               {{ category }}
             </Option>
           </Select>

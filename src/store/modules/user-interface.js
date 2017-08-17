@@ -31,6 +31,12 @@ const actions = {
   clearCurrentNotification({ commit }) {
     commit(CLEAR_CURRENT_NOTIFICATION);
   },
+  showErrorNotification({ dispatch }, message) {
+    dispatch("pushNotification", { message, type: "error" });
+  },
+  showSuccessNotification({ dispatch }, message) {
+    dispatch("pushNotification", { message, type: "success" });
+  },
 };
 
 export default { state, mutations, actions };

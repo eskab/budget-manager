@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import resources from "@/resources/home";
+  import resources from "@/resources";
 
   export default {
     data() {

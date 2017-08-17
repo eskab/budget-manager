@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <notification></notification>
-    <heading title="Budget manager"></heading>
+    <heading :title="title"></heading>
     <div class="app-container">
       <transition name="view-fade" mode="out-in">
         <router-view></router-view>
@@ -13,12 +13,18 @@
 <script>
   import notification from "@/components/Notification";
   import heading from "@/components/Header";
+  import resources from "@/resources";
 
   export default {
     name: "app",
     components: {
       notification,
       heading,
+    },
+    data() {
+      return {
+        title: resources.title,
+      };
     },
   };
 </script>

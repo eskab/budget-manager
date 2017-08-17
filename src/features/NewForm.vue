@@ -10,22 +10,17 @@
 
 <script>
   import { mapActions } from "vuex";
-  import homeResources from "@/resources/home";
+  import homeResources from "@/resources";
   import expenditureForm from "@/components/ExpenditureForm";
+  import formData from "@/mixins/formData";
 
   export default {
     components: {
       expenditureForm,
     },
+    mixins: [formData],
     data() {
       return {
-        model: {
-          id: null,
-          name: null,
-          date: null,
-          category: null,
-          cost: null,
-        },
         title: homeResources.menu.new,
       };
     },

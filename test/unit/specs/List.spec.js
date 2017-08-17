@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import * as sinon from "sinon";
 import moment from "moment";
-import List from "@/features/List/List";
+import List from "@/features/ExpendituresList/ExpendituresList";
 import router from "@/router";
 import { ASSIGN_EXPENDITURES } from "../../../src/store/mutations";
 
