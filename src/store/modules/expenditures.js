@@ -8,25 +8,20 @@ import {
   UPDATE_DATERANGE_FILTER, UPDATE_EXPENDITURE,
 } from "../mutations";
 
+// Todo - refactor
+const isDateValid = ([startDate, endDate]) => ({ date }) => {
+  const dateObject = moment(date);
+
+  return (!startDate && !endDate) || ((
+    dateObject.isSame(startDate, "day") || dateObject.isAfter(startDate, "day")
+  ) && (
+    dateObject.isSame(endDate, "day") || dateObject.isBefore(endDate, "day")
+  ));
+};
+
 // Todo - move it somewhere
-const filterByCategories = (expenditures, categories) =>
-  expenditures.filter(expenditure =>
-    !categories.length || categories.some(category => category === expenditure.category),
-  );
-
-const filterByDateRange = (expenditures, [startDate, endDate]) =>
-  expenditures.filter(({ date }) => {
-    if (!startDate && !endDate) {
-      return true;
-    }
-
-    const dateObject = moment(date);
-    return (
-      dateObject.isSame(startDate, "day") || dateObject.isAfter(startDate, "day")
-    ) && (
-      dateObject.isSame(endDate, "day") || dateObject.isBefore(endDate, "day")
-    );
-  });
+const isCategoryValid = categories => expenditure =>
+  !categories.length || categories.some(category => category === expenditure.category);
 
 const state = {
   expenditures: [],
@@ -62,27 +57,10 @@ const mutations = {
 };
 
 const getters = {
-  // Todo - it is not the best approach to do that
-  filteredExpenditures: ({ expenditures, filters }) => {
-    let filteredExpenditures = expenditures;
-
-    Object.keys(filters)
-      // eslint-disable-next-line
-      .forEach((key) => {
-        switch (key) {
-          case "dateRange":
-            filteredExpenditures = filterByDateRange(filteredExpenditures, filters.dateRange);
-            break;
-          case "categories":
-            filteredExpenditures = filterByCategories(filteredExpenditures, filters.categories);
-            break;
-          default:
-            return filteredExpenditures;
-        }
-      });
-
-    return filteredExpenditures;
-  },
+  filteredExpenditures: ({ expenditures, filters }) =>
+    expenditures
+      .filter(isDateValid(filters.dateRange))
+      .filter(isCategoryValid(filters.categories)),
 };
 
 const actions = {
