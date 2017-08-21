@@ -1,8 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import List from "@/features/ExpendituresList/ExpendituresList";
-import NewForm from "@/features/NewForm";
-import EditForm from "@/features/EditForm";
+import ExpendituresList from "@/features/ExpendituresList/ExpendituresList";
+import NewForm from "@/features/ExpendituresList/NewForm";
+import EditForm from "@/features/ExpendituresList/EditForm";
+
+import RevenuesList from "@/features/RevenuesList/RevenuesList";
+import NewRevenueForm from "@/features/RevenuesList/NewRevenue";
+import EditRevenueForm from "@/features/RevenuesList/EditRevenue";
+
 import Configuration from "@/features/Configuration";
 
 Vue.use(Router);
@@ -13,17 +18,32 @@ export default new Router({
     {
       path: "/expenditures",
       name: "expendituresList",
-      component: List,
+      component: ExpendituresList,
     },
     {
-      path: "/expenditure/new",
-      name: "expenditureNew",
+      path: "/expenditures/new",
+      name: "expendituresNew",
       component: NewForm,
     },
     {
-      path: "/expenditure/edit/:id",
-      name: "expenditureEdit",
+      path: "/expenditures/edit/:id",
+      name: "expendituresEdit",
       component: EditForm,
+    },
+    {
+      path: "/revenues",
+      name: "revenuesList",
+      component: RevenuesList,
+    },
+    {
+      path: "/revenues/new",
+      name: "revenuesNew",
+      component: NewRevenueForm,
+    },
+    {
+      path: "/revenues/edit/:id",
+      name: "revenuesEdit",
+      component: EditRevenueForm,
     },
     {
       path: "/configuration",

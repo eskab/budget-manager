@@ -17,11 +17,11 @@
 </template>
 
 <script>
-  import categoryDictionary from "@/mixins/categories";
+  import categories from "@/mixins/categories";
   import { UPDATE_CATEGORY_FILTER, UPDATE_DATERANGE_FILTER } from "@/store/mutations";
 
   export default {
-    mixins: [categoryDictionary],
+    mixins: [categories],
     computed: {
       categories: {
         get() {

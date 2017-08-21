@@ -32,7 +32,7 @@
           </router-link>
         </Menu-item>
         <Menu-item name="expenditureNew">
-          <router-link to="/expenditure/new" tag="span">
+          <router-link to="/expenditures/new" tag="span">
             <Icon type="plus-round"></Icon>
             {{ menu.expenditures.new }}
           </router-link>
@@ -49,13 +49,13 @@
 </template>
 
 <script>
-  import homeResources from "@/resources";
+  import resources from "@/resources";
 
   export default {
     props: ["title"],
     data() {
       return {
-        menu: homeResources.menu,
+        menu: resources.menu,
       };
     },
     computed: {

@@ -1,6 +1,5 @@
 <template>
-  <div class="expenditures">
-    <filter-bar></filter-bar>
+  <div class="revenues">
     <Table :columns="columns" :data="list" v-if="list.length"></Table>
     <p v-else>
       {{ emptyList }}
@@ -9,38 +8,34 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from "vuex";
+  import { mapActions, mapState } from "vuex";
   import resources from "@/resources";
-  import FilterBar from "./FilterBar";
   import columns from "./tableColumns";
 
   export default {
-    components: {
-      FilterBar,
+    created() {
+      this.fetchRevenues();
     },
     data() {
       return {
-        emptyList: resources.menu.expenditures.emptyList,
+        emptyList: resources.menu.revenues.emptyList,
         columns: [
           ...columns(
-            id => this.deleteExpenditure(id),
+            id => this.deleteRevenue(id),
             params => this.$router.push(params),
           ),
         ],
       };
     },
     computed: {
-      ...mapGetters({
-        list: "filteredExpenditures",
+      ...mapState({
+        list: ({ revenues }) => revenues.revenues,
       }),
-    },
-    created() {
-      this.fetchExpenditures();
     },
     methods: {
       ...mapActions([
-        "fetchExpenditures",
-        "deleteExpenditure",
+        "fetchRevenues",
+        "deleteRevenue",
       ]),
     },
   };

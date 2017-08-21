@@ -16,7 +16,7 @@ export default (errorCb, editCb) => [
     key: "category",
   },
   {
-    title: "Cost",
+    title: "Amount",
     key: "cost",
   },
   {
@@ -43,7 +43,7 @@ export default (errorCb, editCb) => [
           on: {
             click: () =>
               editCb({
-                name: "expendituresEdit",
+                name: "revenuesEdit",
                 params: {
                   id: params.row.id,
                 },

@@ -15,7 +15,7 @@
             </Option>
           </Select>
         </Form-item>
-        <Form-item label="Cost">
+        <Form-item label="Amount">
           <InputNumber v-model="model.cost"></InputNumber>
         </Form-item>
         <Form-item>
