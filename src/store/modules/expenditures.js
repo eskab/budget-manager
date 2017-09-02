@@ -1,27 +1,17 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 import * as uuid from "uuid/v1";
-import moment from "moment";
 import ExpenditureService from "@/services/expenditures";
+import { generatePagedData, isDateValid, isCategoryValid } from "@/utils";
 import {
   ASSIGN_EXPENDITURES, DELETE_EXPENDITURE, INSERT_EXPENDITURE, UPDATE_CATEGORY_FILTER,
-  UPDATE_DATERANGE_FILTER, UPDATE_EXPENDITURE,
+  UPDATE_DATERANGE_FILTER, UPDATE_EXPENDITURE, SET_CURRENT_PAGE,
 } from "../mutations";
 
-// Todo - refactor
-const isDateValid = ([startDate, endDate]) => ({ date }) => {
-  const dateObject = moment(date);
-
-  return (!startDate && !endDate) || ((
-    dateObject.isSame(startDate, "day") || dateObject.isAfter(startDate, "day")
-  ) && (
-    dateObject.isSame(endDate, "day") || dateObject.isBefore(endDate, "day")
-  ));
-};
-
-// Todo - move it somewhere
-const isCategoryValid = categories => expenditure =>
-  !categories.length || categories.some(category => category === expenditure.category);
+const filterExpenditures = (expenditures, filters) =>
+  expenditures
+    .filter(isDateValid(filters.dateRange))
+    .filter(isCategoryValid(filters.categories));
 
 const state = {
   expenditures: [],
@@ -29,6 +19,8 @@ const state = {
     categories: [],
     dateRange: [],
   },
+  itemsPerPage: 10,
+  currentPage: 1,
 };
 
 const mutations = {
@@ -54,13 +46,18 @@ const mutations = {
   [UPDATE_DATERANGE_FILTER](state, value) {
     state.filters.dateRange = value;
   },
+  [SET_CURRENT_PAGE](state, value) {
+    state.currentPage = value;
+  },
 };
 
 const getters = {
-  filteredExpenditures: ({ expenditures, filters }) =>
-    expenditures
-      .filter(isDateValid(filters.dateRange))
-      .filter(isCategoryValid(filters.categories)),
+  pagedExpenditures: ({ expenditures, filters, itemsPerPage }) =>
+    generatePagedData(
+      filterExpenditures(expenditures, filters),
+      itemsPerPage,
+    ),
+  totalCount: ({ expenditures, filters }) => filterExpenditures(expenditures, filters).length,
 };
 
 const actions = {

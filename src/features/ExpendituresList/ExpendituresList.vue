@@ -1,7 +1,14 @@
 <template>
   <div class="expenditures">
     <filter-bar></filter-bar>
-    <Table :columns="columns" :data="list" v-if="list.length"></Table>
+    <div class="expenditures-table" v-if="paged.length">
+      <Table :columns="columns" :data="currentPageData"></Table>
+      <div style="margin: 10px;overflow: hidden">
+        <div style="float: right;">
+          <Page :total="totalCount" :current="currentPage" @on-change="changePage"></Page>
+        </div>
+      </div>
+    </div>
     <p v-else>
       {{ emptyList }}
     </p>
@@ -9,8 +16,9 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from "vuex";
+  import { mapActions, mapMutations, mapGetters, mapState } from "vuex";
   import resources from "@/resources";
+  import { SET_CURRENT_PAGE } from "@/store/mutations";
   import FilterBar from "./FilterBar";
   import columns from "./tableColumns";
 
@@ -31,17 +39,30 @@
     },
     computed: {
       ...mapGetters({
-        list: "filteredExpenditures",
+        paged: "pagedExpenditures",
+        totalCount: "totalCount",
       }),
+      ...mapState({
+        currentPage: ({ expenditures }) => expenditures.currentPage,
+      }),
+      currentPageData() {
+        return this.paged[this.currentPage - 1];
+      },
     },
     created() {
       this.fetchExpenditures();
     },
     methods: {
+      ...mapMutations({
+        setPage: SET_CURRENT_PAGE,
+      }),
       ...mapActions([
         "fetchExpenditures",
         "deleteExpenditure",
       ]),
+      changePage(page) {
+        this.setPage(page);
+      },
     },
   };
 </script>

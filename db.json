@@ -1,0 +1,28 @@
+{
+  "expenditures": [
+    {
+      "id": "8daad910-8696-11e7-8e94-e9da35f4d3b9",
+      "name": "Working form",
+      "date": "2017-08-15T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123123
+    }
+  ],
+  "categories": [
+    {
+      "code": "Food"
+    },
+    {
+      "code": "Bills"
+    }
+  ],
+  "revenues": [
+    {
+      "id": "a6e7d920-8699-11e7-8e41-27eaaada0363",
+      "name": "Abc",
+      "date": "2017-08-14T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    }
+  ]
+}
