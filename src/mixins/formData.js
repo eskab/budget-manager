@@ -1,13 +1,20 @@
+export const initialModel = () => ({
+  id: null,
+  name: null,
+  date: null,
+  category: null,
+  cost: null,
+});
+
 export default {
   data() {
     return {
-      model: {
-        id: null,
-        name: null,
-        date: null,
-        category: null,
-        cost: null,
-      },
+      model: initialModel(),
     };
+  },
+  methods: {
+    resetForm() {
+      this.model = initialModel();
+    },
   },
 };

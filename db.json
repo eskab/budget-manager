@@ -3,9 +3,163 @@
     {
       "id": "8daad910-8696-11e7-8e94-e9da35f4d3b9",
       "name": "Working form",
-      "date": "2017-08-15T22:00:00.000Z",
+      "date": "2017-08-14T22:00:00.000Z",
       "category": "Food",
       "cost": 123123
+    },
+    {
+      "id": "d8da7350-8fbf-11e7-bb6a-313559f844a2",
+      "name": "abc",
+      "date": "2017-09-12T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 12
+    },
+    {
+      "id": "6e42e4e0-8fc0-11e7-9c64-fb4e0d63ed47",
+      "name": "asdfasf",
+      "date": "2017-09-10T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 12
+    },
+    {
+      "id": "b37520a0-8fc0-11e7-ac6a-09ef2a801d1c",
+      "name": "sdkjnfjk",
+      "date": "2017-09-04T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 123
+    },
+    {
+      "id": "f2df4220-8fc0-11e7-b194-077de39faafc",
+      "name": "skdnjkdsf",
+      "date": "2017-09-04T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 123
+    },
+    {
+      "id": "fd3f3400-8fc0-11e7-b194-077de39faafc",
+      "name": "sdfsdf",
+      "date": "2017-09-03T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 123
+    },
+    {
+      "id": "165af7d0-8fc1-11e7-b1d9-4fc3c2bdd880",
+      "name": "sdkjfnjk",
+      "date": "2017-09-11T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 133
+    },
+    {
+      "id": "29392340-8fc1-11e7-864a-430e9f219e32",
+      "name": "sdkjfnkj",
+      "date": "2017-09-03T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "53084340-8fc1-11e7-9cd1-6d8a37f495c2",
+      "name": "sdfsdf",
+      "date": "2017-09-18T22:00:00.000Z",
+      "category": "Food",
+      "cost": 1233
+    },
+    {
+      "id": "7924bb80-8fc1-11e7-82cf-477c7432b64b",
+      "name": "dfkjgnkj",
+      "date": "2017-09-11T22:00:00.000Z",
+      "category": "Food",
+      "cost": 132
+    },
+    {
+      "id": "a1ccc0a0-8fc1-11e7-af5e-e5853566ae07",
+      "name": "sddfsdf",
+      "date": "2017-09-04T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "2143ac40-8fc2-11e7-af68-cfc2df36fad0",
+      "name": "asdsd",
+      "date": "2017-09-12T22:00:00.000Z",
+      "category": "Food",
+      "cost": 133
+    },
+    {
+      "id": "50d4f310-8fc2-11e7-8405-7d9c860334e0",
+      "name": "ksdnfjn",
+      "date": "2017-09-11T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 123
+    },
+    {
+      "id": "da8a65e0-8fc2-11e7-bb23-ebaac187e3c2",
+      "name": "sdkfjnk",
+      "date": "2017-09-04T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "5b4526b0-8fc4-11e7-99c5-63f0ea82576d",
+      "name": "sdkjnf",
+      "date": "2017-09-12T22:00:00.000Z",
+      "category": "Bills",
+      "cost": 123
+    },
+    {
+      "id": "bd46df70-8fc4-11e7-8710-b155ce4b434e",
+      "name": "sldkfml",
+      "date": "2017-09-18T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "d9e58870-8fc4-11e7-913f-47dd17a24ee2",
+      "name": "sdjfnk",
+      "date": "2017-09-04T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "e6ddff80-8fc4-11e7-b049-33e2d0119ce8",
+      "name": "skdjfnkj",
+      "date": "2017-09-19T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "fde8e4b0-8fc4-11e7-b605-7bc1ce9b480e",
+      "name": "sdkjnfkj",
+      "date": "2017-09-19T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "026d8270-8fc5-11e7-b605-7bc1ce9b480e",
+      "name": "sdkjnfkj",
+      "date": "2017-09-19T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "156e5110-8fc5-11e7-b49b-4bf1ea96d484",
+      "name": "sdnfkjn",
+      "date": "2017-09-19T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "2e6bb770-8fc5-11e7-b36c-05de275fb9ab",
+      "name": "sdkfmnjk",
+      "date": "2017-09-12T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "4b9429e0-8fc5-11e7-953d-79d5ae16c21b",
+      "name": "skdjnfkj",
+      "date": "2017-09-11T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
     }
   ],
   "categories": [
@@ -21,6 +175,20 @@
       "id": "a6e7d920-8699-11e7-8e41-27eaaada0363",
       "name": "Abc",
       "date": "2017-08-14T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "a55bd370-8fc4-11e7-8710-b155ce4b434e",
+      "name": "sldkfml",
+      "date": "2017-09-18T22:00:00.000Z",
+      "category": "Food",
+      "cost": 123
+    },
+    {
+      "id": "513497e0-8fc5-11e7-953d-79d5ae16c21b",
+      "name": "sdkjnjk",
+      "date": "2017-09-12T22:00:00.000Z",
       "category": "Food",
       "cost": 123
     }

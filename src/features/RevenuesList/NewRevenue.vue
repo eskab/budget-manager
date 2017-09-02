@@ -1,7 +1,7 @@
 <template>
   <div class="new-revenue-form">
     <revenue-form
-      :initialData="model"
+      :model="model"
       v-on:submit="submit"
     >
     </revenue-form>
@@ -21,6 +21,7 @@
     methods: {
       submit(payload) {
         this.insert(payload);
+        this.resetForm();
       },
       ...mapActions({
         insert: "insertRevenue",

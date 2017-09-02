@@ -1,7 +1,7 @@
 <template>
   <div class="new-expenditure-form">
     <expenditure-form
-      :initialData="model"
+      :model="model"
       v-on:submit="submit"
     >
     </expenditure-form>
@@ -21,6 +21,7 @@
     methods: {
       submit(payload) {
         this.insert(payload);
+        this.resetForm();
       },
       ...mapActions({
         insert: "insertExpenditure",

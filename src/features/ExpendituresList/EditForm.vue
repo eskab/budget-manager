@@ -1,7 +1,7 @@
 <template>
   <div class="edit-expenditure-form">
     <expenditure-form
-      :initialData="model"
+      :model="model"
       v-on:submit="submit"
     >
     </expenditure-form>
