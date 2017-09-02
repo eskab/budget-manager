@@ -1,17 +1,24 @@
-import { drop, times, compose, curry } from "ramda";
-import sliceNestedArrays from "./sliceNestedArrays";
+import { drop, times, compose, curry, slice } from "ramda";
 
-// TO BE REFACTORED
+const numberOfPages = curry(
+  ({ length }, itemsPerPage) =>
+    Math.ceil(length / itemsPerPage),
+);
 
-const numberOfPages = ({ length }, itemsPerPage) => Math.ceil(length / itemsPerPage);
+const calcOffset = curry(
+  (itemsPerPage, pageNumber) =>
+    pageNumber * itemsPerPage,
+);
 
-const calcOffset = itemsPerPage => pageNumber => pageNumber * itemsPerPage;
-
-const part = (collection, calc) => pageNumber => drop(calc(pageNumber), collection);
+const getDataByPage = curry(
+  (collection, offset, pageNumber) =>
+    drop(offset(pageNumber), collection),
+);
 
 export default (collection, itemsPerPage) =>
-  compose(
-    curry(sliceNestedArrays)(itemsPerPage),
-    curry(times)(part(collection, calcOffset(itemsPerPage))),
-    numberOfPages,
-  )(collection, itemsPerPage);
+  times(
+    compose(
+      slice(0, itemsPerPage),
+      getDataByPage(collection)(calcOffset(itemsPerPage)),
+    ),
+  )(numberOfPages(collection)(itemsPerPage));
