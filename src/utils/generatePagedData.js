@@ -23,20 +23,3 @@ export default (collection, itemsPerPage) =>
       calcOffset(itemsPerPage),
     ),
   )(numberOfPages(collection)(itemsPerPage));
-
-  // const a = (collection, itemsPerPage) => {
-  //   const offset = R.times(
-  //     calcOffset(itemsPerPage)
-  //   )(numberOfPages(collection)(itemsPerPage));
-
-  //   console.log(offset);
-
-  //   const getData = R.compose(R.slice(0, itemsPerPage), getDataByPage(collection));
-
-  //   return R.transduce(R.map(getData), (sum, x) => {
-  //     sum.push(x);
-  //     return sum;
-  //   },
-  //   [],
-  //   offset);
-  // };

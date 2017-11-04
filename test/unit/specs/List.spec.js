@@ -17,7 +17,7 @@ const store = {
     },
   },
   getters: {
-    formattedList: (state) => {
+    pagedExpenditures: (state) => {
       const { expenditures } = state;
 
       expenditures.forEach((expenditure) => {

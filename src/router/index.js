@@ -16,6 +16,12 @@ export default new Router({
   mode: "history",
   routes: [
     {
+      path: "/",
+      redirect: {
+        name: "expendituresList",
+      },
+    },
+    {
       path: "/expenditures",
       name: "expendituresList",
       component: ExpendituresList,
@@ -26,7 +32,7 @@ export default new Router({
       component: NewForm,
     },
     {
-      path: "/expenditures/edit/:id",
+      path: "/expenditures/:id/edit",
       name: "expendituresEdit",
       component: EditForm,
     },
@@ -41,7 +47,7 @@ export default new Router({
       component: NewRevenueForm,
     },
     {
-      path: "/revenues/edit/:id",
+      path: "/revenues/:id/edit",
       name: "revenuesEdit",
       component: EditRevenueForm,
     },
