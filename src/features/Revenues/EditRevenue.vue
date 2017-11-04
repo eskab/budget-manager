@@ -1,26 +1,26 @@
 <template>
-  <div class="edit-expenditure-form">
-    <expenditure-form
-      :model="model"
+  <div class="edit-revenue-form">
+    <revenue-form
+      :initialData="model"
       v-on:submit="submit"
     >
-    </expenditure-form>
+    </revenue-form>
   </div>
 </template>
 
 <script>
   import { mapActions } from "vuex";
-  import ExpenditureForm from "@/components/ExpenditureForm";
-  import ExpenditureService from "@/services/expenditures";
+  import RevenueForm from "@/features/Revenues/RevenueForm";
+  import RevenueService from "@/services/revenues";
   import formData from "@/mixins/formData";
 
   export default {
     components: {
-      ExpenditureForm,
+      RevenueForm,
     },
     mixins: [formData],
     created() {
-      ExpenditureService.getById(this.$route.params.id)
+      RevenueService.getById(this.$route.params.id)
         .then((data) => { this.model = data; });
     },
     methods: {
@@ -28,7 +28,7 @@
         this.update(payload);
       },
       ...mapActions({
-        update: "updateExpenditure",
+        update: "updateRevenue",
       }),
     },
   };

@@ -1,21 +1,21 @@
 <template>
-  <div class="new-revenue-form">
-    <revenue-form
+  <div class="new-expenditure-form">
+    <expenditure-form
       :model="model"
       v-on:submit="submit"
     >
-    </revenue-form>
+    </expenditure-form>
   </div>
 </template>
 
 <script>
   import { mapActions } from "vuex";
-  import RevenueForm from "@/components/RevenueForm";
+  import ExpenditureForm from "@/features/Expenditures/ExpenditureForm";
   import formData from "@/mixins/formData";
 
   export default {
     components: {
-      RevenueForm,
+      ExpenditureForm,
     },
     mixins: [formData],
     methods: {
@@ -24,7 +24,7 @@
         this.resetForm();
       },
       ...mapActions({
-        insert: "insertRevenue",
+        insert: "insertExpenditure",
       }),
     },
   };

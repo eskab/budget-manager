@@ -1,7 +1,7 @@
 <template>
-  <div class="edit-revenue-form">
+  <div class="new-revenue-form">
     <revenue-form
-      :initialData="model"
+      :model="model"
       v-on:submit="submit"
     >
     </revenue-form>
@@ -10,8 +10,7 @@
 
 <script>
   import { mapActions } from "vuex";
-  import RevenueForm from "@/components/RevenueForm";
-  import RevenueService from "@/services/revenues";
+  import RevenueForm from "@/features/Revenues/RevenueForm";
   import formData from "@/mixins/formData";
 
   export default {
@@ -19,21 +18,16 @@
       RevenueForm,
     },
     mixins: [formData],
-    created() {
-      RevenueService.getById(this.$route.params.id)
-        .then((data) => { this.model = data; });
-    },
     methods: {
       submit(payload) {
-        this.update(payload);
+        this.insert(payload);
+        this.resetForm();
       },
       ...mapActions({
-        update: "updateRevenue",
+        insert: "insertRevenue",
       }),
     },
   };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

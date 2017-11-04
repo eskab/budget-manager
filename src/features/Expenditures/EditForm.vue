@@ -1,5 +1,5 @@
 <template>
-  <div class="new-expenditure-form">
+  <div class="edit-expenditure-form">
     <expenditure-form
       :model="model"
       v-on:submit="submit"
@@ -10,7 +10,8 @@
 
 <script>
   import { mapActions } from "vuex";
-  import ExpenditureForm from "@/components/ExpenditureForm";
+  import ExpenditureForm from "@/features/Expenditures/ExpenditureForm";
+  import ExpenditureService from "@/services/expenditures";
   import formData from "@/mixins/formData";
 
   export default {
@@ -18,16 +19,21 @@
       ExpenditureForm,
     },
     mixins: [formData],
+    created() {
+      ExpenditureService.getById(this.$route.params.id)
+        .then((data) => { this.model = data; });
+    },
     methods: {
       submit(payload) {
-        this.insert(payload);
-        this.resetForm();
+        this.update(payload);
       },
       ...mapActions({
-        insert: "insertExpenditure",
+        update: "updateExpenditure",
       }),
     },
   };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>

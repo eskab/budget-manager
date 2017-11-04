@@ -1,12 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-import ExpendituresList from "@/features/ExpendituresList/ExpendituresList";
-import NewForm from "@/features/ExpendituresList/NewForm";
-import EditForm from "@/features/ExpendituresList/EditForm";
+import ExpendituresList from "@/features/Expenditures/ExpendituresList";
+import NewForm from "@/features/Expenditures/NewForm";
+import EditForm from "@/features/Expenditures/EditForm";
 
-import RevenuesList from "@/features/RevenuesList/RevenuesList";
-import NewRevenueForm from "@/features/RevenuesList/NewRevenue";
-import EditRevenueForm from "@/features/RevenuesList/EditRevenue";
+import RevenuesList from "@/features/Revenues/RevenuesList";
+import NewRevenueForm from "@/features/Revenues/NewRevenue";
+import EditRevenueForm from "@/features/Revenues/EditRevenue";
 
 import Configuration from "@/features/Configuration";
 
