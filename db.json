@@ -160,6 +160,13 @@
       "date": "2017-09-11T22:00:00.000Z",
       "category": "Food",
       "cost": 123
+    },
+    {
+      "id": "dbc472a0-cb01-11e7-bf08-cd672ccd13ce",
+      "name": "sdfsdfsdf",
+      "date": "2017-11-15T23:00:00.000Z",
+      "category": "Bills",
+      "cost": 123
     }
   ],
   "categories": [
