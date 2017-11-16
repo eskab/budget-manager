@@ -27,18 +27,16 @@ const mutations = {
   [ASSIGN_EXPENDITURES](state, expenditures) {
     state.expenditures = expenditures;
   },
-  [INSERT_EXPENDITURE]({ expenditures }, expenditureObject) {
-    expenditures.push(expenditureObject);
+  [INSERT_EXPENDITURE](state, expenditure) {
+    state.expenditures.push(expenditure);
   },
   [DELETE_EXPENDITURE](state, id) {
     state.expenditures = state.expenditures.filter(expenditure => expenditure.id !== id);
   },
-  [UPDATE_EXPENDITURE](state, expenditureObject) {
-    state.expenditures.forEach((expenditure) => {
-      if (expenditure.id === expenditureObject.id) {
-        expenditure = expenditureObject;
-      }
-    });
+  [UPDATE_EXPENDITURE](state, expenditure) {
+    const index = state.expenditures.findIndex(({ id }) => id === expenditure.id);
+
+    state.expenditures[index] = expenditure;
   },
   [UPDATE_CATEGORY_FILTER](state, value) {
     state.filters.categories = value;

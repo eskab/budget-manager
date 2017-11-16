@@ -2,8 +2,8 @@
   "expenditures": [
     {
       "id": "8daad910-8696-11e7-8e94-e9da35f4d3b9",
-      "name": "Working form",
-      "date": "2017-08-14T22:00:00.000Z",
+      "name": "Working aa",
+      "date": "2017-07-25T22:00:00.000Z",
       "category": "Food",
       "cost": 123123
     },
@@ -34,27 +34,6 @@
       "date": "2017-09-04T22:00:00.000Z",
       "category": "Bills",
       "cost": 128
-    },
-    {
-      "id": "fd3f3400-8fc0-11e7-b194-077de39faafc",
-      "name": "sdfsdf",
-      "date": "2017-09-03T22:00:00.000Z",
-      "category": "Bills",
-      "cost": 123
-    },
-    {
-      "id": "165af7d0-8fc1-11e7-b1d9-4fc3c2bdd880",
-      "name": "sdkjfnjk",
-      "date": "2017-09-11T22:00:00.000Z",
-      "category": "Bills",
-      "cost": 133
-    },
-    {
-      "id": "29392340-8fc1-11e7-864a-430e9f219e32",
-      "name": "sdkjfnkj",
-      "date": "2017-09-03T22:00:00.000Z",
-      "category": "Food",
-      "cost": 123
     },
     {
       "id": "53084340-8fc1-11e7-9cd1-6d8a37f495c2",
@@ -186,18 +165,18 @@
       "cost": 123
     },
     {
-      "id": "a55bd370-8fc4-11e7-8710-b155ce4b434e",
-      "name": "sldkfml",
-      "date": "2017-09-18T22:00:00.000Z",
-      "category": "Food",
-      "cost": 123
-    },
-    {
       "id": "513497e0-8fc5-11e7-953d-79d5ae16c21b",
       "name": "sdkjnjk",
       "date": "2017-09-12T22:00:00.000Z",
       "category": "Food",
       "cost": 123
+    },
+    {
+      "id": "1f5ffa10-cb08-11e7-9b06-6383827319d3",
+      "name": "asdasd",
+      "date": "2017-11-14T23:00:00.000Z",
+      "category": "Bills",
+      "cost": 123123
     }
   ]
 }

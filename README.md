@@ -13,8 +13,4 @@ yarn start
 ```
 
 ## To do
-* Resolve all todos!
-* Think about project structure
-* Resolve all todos x2
-* Write reusable abstractions
-* Ramda
+* Write dashboard tabs/filters

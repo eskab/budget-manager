@@ -18,12 +18,10 @@ const mutations = {
   [DELETE_REVENUE](state, id) {
     state.revenues = state.revenues.filter(revenue => revenue.id !== id);
   },
-  [UPDATE_REVENUE](state, revenueObject) {
-    state.revenues.forEach((revenue) => {
-      if (revenue.id === revenueObject.id) {
-        revenue = revenueObject;
-      }
-    });
+  [UPDATE_REVENUE](state, revenue) {
+    const index = state.revenues.findIndex(({ id }) => id === revenue.id);
+
+    state.revenues[index] = revenue;
   },
 };
 

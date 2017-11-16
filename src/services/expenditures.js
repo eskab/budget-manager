@@ -16,7 +16,8 @@ export default {
       .catch(error => Promise.reject(error));
   },
   update(request) {
-    return Vue.http.put(`expenditures/${request.id}`, request);
+    return Vue.http.put(`expenditures/${request.id}`, request)
+      .then(response => Promise.resolve(response.data));
   },
   getById(id) {
     return Vue.http.get(`expenditures/${id}`)
