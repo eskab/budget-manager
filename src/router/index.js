@@ -1,12 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-import ExpendituresList from "@/features/ExpendituresList/ExpendituresList";
-import NewForm from "@/features/ExpendituresList/NewForm";
-import EditForm from "@/features/ExpendituresList/EditForm";
+import ExpendituresList from "@/features/Expenditures/List";
+import NewExpenditure from "@/features/Expenditures/New";
+import EditExpenditure from "@/features/Expenditures/Edit";
 
-import RevenuesList from "@/features/RevenuesList/RevenuesList";
-import NewRevenueForm from "@/features/RevenuesList/NewRevenue";
-import EditRevenueForm from "@/features/RevenuesList/EditRevenue";
+import RevenuesList from "@/features/Revenues/List";
+import NewRevenue from "@/features/Revenues/New";
+import EditRevenue from "@/features/Revenues/Edit";
 
 import Configuration from "@/features/Configuration";
 
@@ -29,12 +29,12 @@ export default new Router({
     {
       path: "/expenditures/new",
       name: "expendituresNew",
-      component: NewForm,
+      component: NewExpenditure,
     },
     {
       path: "/expenditures/:id/edit",
       name: "expendituresEdit",
-      component: EditForm,
+      component: EditExpenditure,
     },
     {
       path: "/revenues",
@@ -44,12 +44,12 @@ export default new Router({
     {
       path: "/revenues/new",
       name: "revenuesNew",
-      component: NewRevenueForm,
+      component: NewRevenue,
     },
     {
       path: "/revenues/:id/edit",
       name: "revenuesEdit",
-      component: EditRevenueForm,
+      component: EditRevenue,
     },
     {
       path: "/configuration",
